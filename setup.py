@@ -29,7 +29,7 @@ def get_cuda_placeholder():
     if os.system('which nvcc > /dev/null') == 0:
         output = subprocess.check_output('nvcc --version', shell=True)
         match = re.search(r'Cuda compilation tools, release (\d+\.\d+)',
-                          output)
+                          output.decode('utf-8'))
         if match:
             version = 'cu' + ''.join(match.group(1).split('.'))
         else:
@@ -85,7 +85,6 @@ def get_torch_url():
 
 def install_pytorch():
     cmd = 'pip install -U {}'.format(get_torch_url())
-    print(cmd)
     if os.system(cmd):
         raise InstallationError()
 

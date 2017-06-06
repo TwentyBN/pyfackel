@@ -71,10 +71,10 @@ class TestGetCudaPlaceholder(unittest.TestCase):
     def test_should_return_cu80_for_cuda80(self, mock_check_outp, mock_system):
         mock_system.return_value = 0
         mock_check_outp.return_value = (
-            "nvcc: NVIDIA (R) Cuda compiler driver"
-            "Copyright (c) 2005-2016 NVIDIA Corporation"
-            "Built on Sun_Sep__4_22:14:01_CDT_2016"
-            "Cuda compilation tools, release 8.0, V8.0.44")
+            b"nvcc: NVIDIA (R) Cuda compiler driver"
+            b"Copyright (c) 2005-2016 NVIDIA Corporation"
+            b"Built on Sun_Sep__4_22:14:01_CDT_2016"
+            b"Cuda compilation tools, release 8.0, V8.0.44")
 
         version = setup.get_cuda_placeholder()
 
@@ -87,10 +87,10 @@ class TestGetCudaPlaceholder(unittest.TestCase):
     def test_should_return_cu75_for_cuda75(self, mock_check_outp, mock_system):
         mock_system.return_value = 0
         mock_check_outp.return_value = (
-            "nvcc: NVIDIA (R) Cuda compiler driver"
-            "Copyright (c) 2005-2016 NVIDIA Corporation"
-            "Built on Sun_Sep__4_22:14:01_CDT_2016"
-            "Cuda compilation tools, release 7.5, V7.5.xx")
+            b"nvcc: NVIDIA (R) Cuda compiler driver"
+            b"Copyright (c) 2005-2016 NVIDIA Corporation"
+            b"Built on Sun_Sep__4_22:14:01_CDT_2016"
+            b"Cuda compilation tools, release 7.5, V7.5.xx")
 
         version = setup.get_cuda_placeholder()
 
@@ -103,10 +103,10 @@ class TestGetCudaPlaceholder(unittest.TestCase):
     def test_should_raise_for_cuda70(self, mock_check_outp, mock_system):
         mock_system.return_value = 0
         mock_check_outp.return_value = (
-            "nvcc: NVIDIA (R) Cuda compiler driver"
-            "Copyright (c) 2005-2016 NVIDIA Corporation"
-            "Built on Sun_Sep__4_22:14:01_CDT_2016"
-            "Cuda compilation tools, release 7.0, V7.0.xx")
+            b"nvcc: NVIDIA (R) Cuda compiler driver"
+            b"Copyright (c) 2005-2016 NVIDIA Corporation"
+            b"Built on Sun_Sep__4_22:14:01_CDT_2016"
+            b"Cuda compilation tools, release 7.0, V7.0.xx")
 
         with self.assertRaises(setup.VersionError):
             setup.get_cuda_placeholder()

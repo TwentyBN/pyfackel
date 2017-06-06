@@ -68,7 +68,7 @@ def format_python_version(python_version):
     if python_version == '27':
         return 'cp27-none'
     elif python_version in ['35', '36']:
-        return '-'.join(['cp-{}'.format(python_version)]*2)
+        return '-'.join(['cp{}'.format(python_version)]*2)
 
 
 def get_torch_url():

@@ -21,6 +21,10 @@ class UnsupportedPlatformException(Exception):
     pass
 
 
+class InstallationError(Exception):
+    pass
+
+
 def get_cuda_placeholder():
     if os.system('which nvcc > /dev/null') == 0:
         output = subprocess.check_output('nvcc --version', shell=True)
@@ -79,7 +83,17 @@ def get_torch_url():
         return LINUX_TEMPLATE.format(cuda_version, python_placeholder)
 
 
+def install_pytorch():
+    cmd = 'pip install -U {}'.format(get_torch_url())
+    print(cmd)
+    if os.system(cmd):
+        raise InstallationError()
+
+
 if __name__ == '__main__':
+    if len(sys.argv) > 1 and sys.argv[1] == 'install':
+        install_pytorch()
+
     setup(name='pyfackel',
           version='0.1.12.0',
           description='meta package for installing pytorch',
@@ -101,5 +115,4 @@ if __name__ == '__main__':
           url='https://github.com/TwentyBN/pyfackel',
           author='Ingo Fruend, Guillaume Berger',
           author_email='ingo.fruend@twentybn.com, gberger.eclille@gmail.com',
-          install_requires=[get_torch_url()],
           )

@@ -100,5 +100,6 @@ if __name__ == '__main__':
           license='MIT',
           url='https://github.com/TwentyBN/pyfackel',
           author='Ingo Fruend, Guillaume Berger',
-          author_email='ingo.fruend@twentybn.com, gberger.eclille@gmail.com'
+          author_email='ingo.fruend@twentybn.com, gberger.eclille@gmail.com',
+          install_requires=[get_torch_url()],
           )

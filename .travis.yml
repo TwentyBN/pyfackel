@@ -1,9 +1,16 @@
 language: python
 python:
-    - "2.7"
-    - "3.5"
-    - "3.6"
+- '2.7'
+- '3.5'
+- '3.6'
 install:
-    - pip install -U pip
-    - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then pip install mock; fi
+- pip install -U pip
+- if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then pip install mock; fi
 script: python -m unittest tests
+deploy:
+  provider: pypi
+  user: ingofruend
+  password:
+    secure: b3a3WOBFvrXhNlxHHpDKV9cKNWUh5n4IMeIBVauLfT6Crtrsd+UFbfvA3+x/dPoWuHEnL93OK0FstoP8QbSTugzTWzd2ksUXq6pUKdM9FVbgj7jKtHMy9ksZANrt1bxyhMI+g2Ix2S8vX5b4C53a0EII/+WX6bvwSY83bUnmaJPbUrqmJmDzhft31/IecP2/9AU6t2Sz3uzmLuFTkOaeWXd7O/cmTg4oEeDiU6up0Mwmz/sv7DIaVFUw+XLQkM6zsTiayTvLwI6tgGVinYRDW8oU+ntxejtlwqWctw6s9u8+GWRL3Qw642arFUizD2b1+tfeIhSIlA4I0A2nO4ZE0QNr97edHrB1JYPi1a9YCJ1e5Kpe4X6rOg0z1+GJiHrIEzkEKLNCDtg6EppjgIbcT5UEPBeEds1fWRIv9vkHtlXejxfYqsWuFHQ9sHGcc+bC8bQr5pYF7FYSrukIQNFfqrmTd5snynkm+RY2ilaZxQGQAIPZggZ3WSLUPdR/AdGEMH4aieKsR77I1GHEO3cl5C7ut3qPNrmaTCEGBpWUKPKlER1mwZKAR6MnWWUVJECjO4k3m8bljJ/urpwd5s0FomWY4OAY4yTrmYpUgHAl5PiPQtmFj9emCwld0GyuckaAXVH4wwtdFcl+JvNTkYf2UjzAi0UgKFiJ9KYwhoHmUIk=
+  on:
+    repo: TwentyBN/pyfackel

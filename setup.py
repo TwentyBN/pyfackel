@@ -94,7 +94,7 @@ if __name__ == '__main__':
         install_pytorch()
 
     setup(name='pyfackel',
-          version='0.1.12.0',
+          version='0.1.12.1',
           description='meta package for installing pytorch',
           classifiers=[
               'Development Status :: 4 - Beta',

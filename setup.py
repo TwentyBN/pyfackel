@@ -89,9 +89,14 @@ def install_pytorch():
         raise InstallationError()
 
 
+def install_torchvision():
+    os.system('pip install torchvision')
+
+
 if __name__ == '__main__':
     if len(sys.argv) > 1 and sys.argv[1] == 'install':
         install_pytorch()
+        install_torchvision()
 
     setup(name='pyfackel',
           version='0.1.12.2',
